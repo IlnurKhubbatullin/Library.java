@@ -17,18 +17,14 @@ public class Person {
     @Min(value = 0, message = "Age should be more than 0")
     private int age;
 
-    @NotEmpty(message = "Email should not to be empty")
-    @Email(message = "Email should be valid")
-    private String email;
 
     public Person() {
     }
 
-    public Person(int id, String name, int age, String email) {
+    public Person(int id, String name, int age) {
         this.id = id;
         this.name = name;
         this.age = age;
-        this.email = email;
     }
 
     public int getAge() {
@@ -37,14 +33,6 @@ public class Person {
 
     public void setAge(int age) {
         this.age = age;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public int getId() {
@@ -62,4 +50,6 @@ public class Person {
     public void setName(String name) {
         this.name = name;
     }
+
+
 }
