@@ -74,8 +74,8 @@ public class BooksController {
     }
 
 //    @GetMapping()
-//    public String giveBook(Model model, @ModelAttribute("book") Book book) {
-//        model.addAttribute("books", bookDAO.index());
+//    public String giveBook(Model model, @ModelAttribute("person") Person person) {
+//        model.addAttribute("person", personDAO.index());
 //        return "books/show";
 //    }
 
