@@ -73,9 +73,9 @@ public class BooksController {
         return "redirect:/books";
     }
 
-//    @GetMapping()
+//    @GetMapping
 //    public String giveBook(Model model, @ModelAttribute("person") Person person) {
-//        model.addAttribute("person", personDAO.index());
+//        model.addAttribute("people", personDAO.index());
 //        return "books/show";
 //    }
 

@@ -18,26 +18,26 @@
 
 <div th:if="${book.getOwner()!=null}"  th:text="'The book is now at: ' + ${person.getName()}">Zanato</div>
 
-<div th:else="${book.getOwner()==null}">
-<label>This book is free. Who should I assign it to?</label>
-<br/>
-<form th:method="PATCH" th:action="@{/books/give}">
-<label for="person">Choose a person</label>
-<select th:object="${person}" th:field="*{id}" id="person">
-<option th:each="person : ${people}" th:value="${person.getId()}"
-        th:text="${person.getName()}">
-</option>
-</select>
-<input type="submit" value="get">
+<form method="POST"  th:object="${book}" th:action="@{/books/give}"
+      th:else="${book.getOwner() == null}">
+    <p>This book is free. Who should I assign it to?</p>
+                <label for="person">Choose a person</label>
+                <select  th:field="*{id}" id="person">
+                    <option th:each="person : ${people}" th:value="${person.getId()}"
+                            th:text="${person.getName()}">
+                    </option>
+                </select>
+            <td>
+                <input type="submit" value="give"/>
+            </td>
 </form>
-</div>
 
 <a th:href="@{/books/{id}/edit(id=${book.getId()})}">
-<input type="submit" value="Edit">
+    <input type="submit" value="Edit">
 </a>
 <br/>
 <form th:method="DELETE" th:action="@{/books/{id}(id=${book.getId()})}">
-<input type="submit" value="Delete!">
+    <input type="submit" value="Delete!">
 </form>
 </body>
 </html>
