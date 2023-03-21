@@ -44,7 +44,8 @@ public class BookDAO {
     }
 
 
-    public void toGiveBook(Person person, Book book) {
+    public void toGiveBook(Book book, Person person ) {
         jdbcTemplate.update("update book set owner=? where id=?", book.getOwner(), person.getId());
     }
+
 }

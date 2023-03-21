@@ -8,6 +8,8 @@
 <p th:text="${person.getName()}">value</p>
 <p th:text="${person.getId()}">value</p>
 
+<div th:if="${book.getOwner() != person.getName()}" th:text="'The man has not yet taken a single book'">No</div>
+<br/>
 <a th:href="@{/people/{id}/edit(id=${person.getId()})}">
     <input type="submit" value="Edit">
 </a>

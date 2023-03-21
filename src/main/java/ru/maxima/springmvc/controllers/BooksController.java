@@ -17,11 +17,12 @@ import javax.validation.Valid;
 public class BooksController {
 
     private final BookDAO bookDAO;
-    private PersonDAO personDAO;
+    private final PersonDAO personDAO;
 
     @Autowired
-    public BooksController(BookDAO bookDAO) {
+    public BooksController(BookDAO bookDAO, PersonDAO personDAO) {
         this.bookDAO = bookDAO;
+        this.personDAO = personDAO;
     }
 
     @GetMapping()
@@ -33,6 +34,8 @@ public class BooksController {
     @GetMapping("/{id}")
     public String show(@PathVariable("id") int id, Model model) {
         model.addAttribute("book", bookDAO.show(id));
+        model.addAttribute("people", personDAO.index());
+
         return "books/show";
     }
 
@@ -79,9 +82,9 @@ public class BooksController {
 //        return "books/show";
 //    }
 
-    @PatchMapping("/give")
-    public String toGiveBook (@ModelAttribute("person") Person person, Book book) {
-        bookDAO.toGiveBook(person, book);
+    @PostMapping("/give")
+    public String toGiveBook (@ModelAttribute("book") Book book, @ModelAttribute("book") Person person) {
+        bookDAO.toGiveBook( book, person);
         return "books/show";
     }
 
